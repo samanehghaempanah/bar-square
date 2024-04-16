@@ -1,0 +1,28 @@
+<h2 class="content-block">داشبورد</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <div id="chart-demo">
+      <dx-chart palette="violet" [dataSource]="architecturesInfo" title="درصد فروش" class="chartLabel">
+        <dxi-series valueField="smp" name="مشتری اول"></dxi-series>
+        <dxi-series valueField="mmp" name="مشتری دوم"></dxi-series>
+        <dxi-series valueField="cnstl" name="مشتری سوم"></dxi-series>
+        <dxi-series valueField="cluster" name="مشتری چهارم"></dxi-series>
+        <dxo-common-series-settings #seriesSettings argumentField="year" type="spline">
+        </dxo-common-series-settings>
+        <dxo-margin [bottom]="20"></dxo-margin>
+        <dxo-common-axis-settings>
+          <dxo-grid [visible]="true"></dxo-grid>
+        </dxo-common-axis-settings>
+        <dxo-legend verticalAlignment="top" horizontalAlignment="right">
+        </dxo-legend>
+        <dxo-argument-axis [allowDecimals]="false" [axisDivisionFactor]="60">
+          <dxo-label>
+            <dxo-format type="decimal"></dxo-format>
+          </dxo-label>
+        </dxo-argument-axis>
+        <dxo-export [enabled]="true"></dxo-export>
+        <dxo-tooltip [enabled]="true"></dxo-tooltip>
+      </dx-chart>
+    </div>
+  </div>
+</div>
