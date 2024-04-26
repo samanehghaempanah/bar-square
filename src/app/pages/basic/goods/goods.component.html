@@ -1,0 +1,205 @@
+<!-- Goods List -->
+<h2 class="content-block">لیست اجناس</h2>
+<div class="dx-card wide-card mx-4">
+  <div class="responsive-paddings">
+    <dx-data-grid
+      #dataGridRef
+      [dataSource]="goods"
+      [customizeColumns]="customizeColumns"
+      [showBorders]="false"
+      [hoverStateEnabled]="true"
+      [focusedRowEnabled]="true"
+      [columnHidingEnabled]="true"
+      keyExpr="GoodId"
+      width="100%"
+      height="100%"
+      noDataText=".داده ای وجود ندارد"
+      (onFocusedRowChanged)="focusedRowChanged($event)"
+      (onKeyDown)="handleEditGood($event)"
+    >
+      <dxi-column cellTemplate="rowNumber"></dxi-column>
+      <dxi-column dataField="Type" cellTemplate="lookupTemplate"></dxi-column>
+      <dxi-column
+        dataField="Category"
+        cellTemplate="lookupTemplate"
+      ></dxi-column>
+      <dxi-column dataField="Name"></dxi-column>
+      <dxi-column dataField="Brand" cellTemplate="lookupTemplate"></dxi-column>
+      <dxi-column
+        dataField="Quality"
+        cellTemplate="lookupTemplate"
+      ></dxi-column>
+      <dxi-column
+        dataField="Packing"
+        cellTemplate="lookupTemplate"
+      ></dxi-column>
+      <dxi-column dataField="Weight"></dxi-column>
+      <dxi-column dataField="PercentageDrop"></dxi-column>
+      <dxi-column cellTemplate="editTemplate" [fixed]="true"></dxi-column>
+      <dxi-column cellTemplate="deleteTemplate" [fixed]="true"></dxi-column>
+
+      <div *dxTemplate="let data of 'rowNumber'">
+        <div>{{ handleRowNumber(data) }}</div>
+      </div>
+      <div *dxTemplate="let action of 'lookupTemplate'">
+        <label>
+          {{
+            enums[action?.column.dataField][
+              action.data[action?.column.dataField] - 1
+            ]?.text
+          }}
+        </label>
+      </div>
+      <div *dxTemplate="let action of 'editTemplate'">
+        <dx-button
+          text=""
+          icon="edit"
+          class="text-info"
+          (onClick)="handleChangeGood('edit', action.data)"
+        >
+        </dx-button>
+      </div>
+      <div *dxTemplate="let action of 'deleteTemplate'">
+        <dx-button
+          text=""
+          icon="trash"
+          class="text-danger"
+          (onClick)="handleChangeGood('delete', action.data)"
+        >
+        </dx-button>
+      </div>
+
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-selection [deferred]="true" mode="single" selectAllMode="allPages">
+      </dxo-selection>
+      <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+      <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+    </dx-data-grid>
+
+    <div class="d-flex justify-end my-4 mb-0">
+      <dx-button
+        type="default"
+        text="جدید"
+        class="formBtn w-md-100"
+        (onClick)="handleNewGood()"
+      >
+      </dx-button>
+    </div>
+  </div>
+</div>
+
+<!-- View Good Details -->
+<h2 class="content-block">مشخصات جنس</h2>
+<div class="dx-card wide-card mx-4">
+  <div class="responsive-paddings py-1">
+    <div class="d-flex justify-between">
+      <div class="d-flex flex-column justify-center my-2 w-100">
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> نوع جنس </label>
+            <label class="text-muted">
+              {{
+                this.formData.Type
+                  ? this.enums.Type[this.formData.Type - 1]?.text
+                  : "---"
+              }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> بسته بندی </label>
+            <label class="text-muted">
+              {{
+                this.formData.Packing
+                  ? this.enums.Packing[this.formData.Packing - 1]?.text
+                  : "---"
+              }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> برند </label>
+            <label class="text-muted">
+              {{
+                this.formData.Brand
+                  ? this.enums.Brand[this.formData.Brand - 1]?.text
+                  : "---"
+              }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> نام جنس </label>
+            <label class="text-muted">
+              {{ formData.Name ? formData.Name : "---" }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-center my-2 w-100">
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> دسته بندی </label>
+            <label class="text-muted">
+              {{
+                formData.Type
+                  ? enums.Category[formData.Category - 1]?.text
+                  : "---"
+              }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> کیفیت </label>
+            <label class="text-muted">
+              {{
+                this.formData.Quality
+                  ? this.enums.Quality[this.formData.Quality - 1]?.text
+                  : "---"
+              }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> وزن ظرف </label>
+            <label class="text-muted"> {{ formData.Weight }} کیلوگرم </label>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex flex-column justify-center">
+          <div class="d-flex items-center column-gap-small my-1">
+            <label class="text-info"> درصد افت </label>
+            <label class="text-muted">
+              {{ formData.PercentageDrop }} درصد
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Forms -->
+<app-good-popup
+  [ShowPopUpForm]="pageData.showPopUpForm"
+  [PopUpFormMode]="pageData.popUpFormMode"
+  [Title]="pageData.popUpFormTitle"
+  [FormData]="formData"
+  (InsertData)="onNewGood($event)"
+  (EditData)="onEditGood($event)"
+  (ClosePopup)="pageData.showPopUpForm = false"
+>
+</app-good-popup>
