@@ -1,42 +1,59 @@
 export const navigation = [
   {
+    text: 'داشبورد',
+    path: '/',
+    icon: 'home',
+  },
+  {
     text: 'اطلاعات پایه',
-    path: '/home',
+    path: '',
     icon: 'rename',
     items: [
       {
         text: 'اجناس',
-        path: ''
+        // path: 'basic/goods',
+        items: [
+          {
+            text: 'طراحی اول (فرم)',
+            path: 'basic/goods/1',
+          },
+          {
+            text: 'طراحی دوم (گرید)',
+            path: 'basic/goods/2',
+          },
+          {
+            text: 'طراحی سوم (پاپ آپ)',
+            path: 'basic/goods/3',
+          }
+        ],
       },
       {
         text: 'حساب بانکی',
-        path: ''
+        // path: '',
       },
       {
         text: 'اشخاص',
-        path: '',
+        // path: '',
         items: [
           {
             text: 'دسته بندی اشخاص',
-            path: ''
-          }
-        ]
+            // path: '',
+          },
+        ],
       },
       {
         text: 'کاربران',
-        path: ''
-      }
-      ,
+        // path: '',
+      },
       {
         text: 'گروه های کاربری',
-        path: ''
-      }
-      ,
+        // path: '',
+      },
       {
         text: 'دسترسی ها',
-        path: ''
-      }
-    ]
+        // path: '',
+      },
+    ],
   },
   {
     text: 'خرید',
@@ -44,9 +61,9 @@ export const navigation = [
     items: [
       {
         text: 'خرید (بارنامه): شراکت، امانی، خریداری',
-        path: ''
-      }
-    ]
+        // path: '',
+      },
+    ],
   },
   {
     text: 'فروش',
@@ -54,17 +71,17 @@ export const navigation = [
     items: [
       {
         text: 'پای باسکول',
-        path: ''
+        // path: '',
       },
       {
         text: 'فروش روزانه',
-        path: ''
+        // path: '',
       },
       {
         text: 'فاکتور فروش (فروش تک قلم)',
-        path: ''
-      }
-    ]
+        // path: '',
+      },
+    ],
   },
   {
     text: 'دریافت و پرداخت',
@@ -72,21 +89,21 @@ export const navigation = [
     items: [
       {
         text: 'ثبت پرداختی ها',
-        path: ''
+        // path: '',
       },
       {
         text: 'ثبت دریافتی ها',
-        path: ''
+        // path: '',
       },
       {
         text: 'انتقال بین حساب ها',
-        path: ''
+        // path: '',
       },
       {
         text: 'انتقال بین اشخاص',
-        path: ''
-      }
-    ]
+        // path: '',
+      },
+    ],
   },
   {
     text: 'عملیات  چک ها',
@@ -94,24 +111,24 @@ export const navigation = [
     items: [
       {
         text: 'واگذاری چک به حساب',
-        path: ''
+        // path: '',
       },
       {
         text: 'وصولی چک',
-        path: ''
+        // path: '',
       },
       {
         text: 'برگشت چک',
-        path: ''
+        // path: '',
       },
       {
         text: 'خرج چک',
-        path: ''
-      }
-    ]
+        // path: '',
+      },
+    ],
   },
   {
     text: 'گزارشات',
-    icon: 'textdocument'
+    icon: 'textdocument',
   }
 ];
