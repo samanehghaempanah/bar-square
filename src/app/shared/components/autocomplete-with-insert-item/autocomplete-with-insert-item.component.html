@@ -1,0 +1,87 @@
+<dx-select-box
+  #selectBoxRef
+  [(value)]="DefaultValue"
+  [dataSource]="DataSource"
+  [valueExpr]="ValueExpr"
+  [displayExpr]="DisplayExpr"
+  [placeholder]="Placeholder"
+  [class]="Class"
+  [label]="Label"
+  [showClearButton]="false"
+  [searchEnabled]="true"
+  [showDataBeforeSearch]="true"
+  [minSearchLength]="0"
+  [searchTimeout]="500"
+  searchMode="contains"
+  labelMode="floating"
+  noDataText="موردی یافت نشد."
+  (onSelectionChanged)="handleSelectOption($event)"
+  (onEnterKey)="handleAddToOptionsList($event)"
+></dx-select-box>
+
+@if(readyForInsertItems.length>0) {
+<div class="itemsList my-2">
+  <span class="text-info text-small">آماده برای ثبت: </span>
+  @for(item of readyForInsertItems; track $index) {
+  <span class="chip-purple mx-1">
+    <span class="btn addbtn" (click)="handleAddOption(DataSource, item)"
+      >&plus;
+    </span>
+    <span>{{ item }}</span>
+  </span>
+  }
+</div>
+}
+
+<dx-popup
+  [(visible)]="openPopupForm"
+  [showCloseButton]="false"
+  [hideOnOutsideClick]="false"
+  [minWidth]="350"
+  [maxWidth]="400"
+  height="auto"
+  title="افزودن آیتم جدید"
+>
+  <div *dxTemplate="let data of 'content'">
+    <dx-scroll-view width="100%" height="100%">
+      <div class="content">
+        <div class="d-flex flex-column">
+          <dx-text-box
+            [(value)]="popupFormData.text"
+            class="w-100 my-2"
+            label="نوع جنس"
+            labelMode="floating"
+          >
+          </dx-text-box>
+          <dx-select-box
+            [(value)]="popupFormData.categoryId"
+            [dataSource]="enums.Category"
+            valueExpr="id"
+            displayExpr="text"
+            placeholder=""
+            class="w-100 my-2"
+            label="دسته بندی"
+            labelMode="floating"
+          >
+          </dx-select-box>
+        </div>
+      </div>
+    </dx-scroll-view>
+  </div>
+  <dxi-toolbar-item
+    [options]="newFormButtonOptions"
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    cssClass="w-100"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    [options]="closeFormButtonOptions"
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    cssClass="w-100"
+  >
+  </dxi-toolbar-item>
+</dx-popup>
