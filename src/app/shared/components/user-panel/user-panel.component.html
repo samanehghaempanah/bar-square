@@ -5,21 +5,23 @@
     </div>
     <div class="user-name">{{user?.email}}</div>
   </div>
-  <dx-context-menu
-    *ngIf="menuMode === 'context'"
-    [items]="menuItems"
-    target=".user-button"
-    showEvent="dxclick"
-    width="210px"
+  @if (menuMode === 'context') {
+    <dx-context-menu
+      [items]="menuItems"
+      target=".user-button"
+      showEvent="dxclick"
+      width="210px"
     [position]="{
       my: 'top',
       at: 'bottom'
     }"
-    cssClass="user-menu">
-  </dx-context-menu>
-  <dx-list
-    *ngIf="menuMode === 'list'"
-    class="dx-toolbar-menu-action"
-    [items]="menuItems">
-  </dx-list>
+      cssClass="user-menu">
+    </dx-context-menu>
+  }
+  @if (menuMode === 'list') {
+    <dx-list
+      class="dx-toolbar-menu-action"
+      [items]="menuItems">
+    </dx-list>
+  }
 </div>

@@ -25,32 +25,33 @@
     <dxi-item>
       <div class='policy-info'>
         By creating an account, you agree to the <a routerLink="#">Terms of Service</a> and <a routerLink="#">Privacy
-          Policy</a>
-      </div>
-    </dxi-item>
+      Policy</a>
+    </div>
+  </dxi-item>
 
-    <dxi-item itemType="button">
-      <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'createAccountTemplate'">
-      </dxo-button-options>
-    </dxi-item>
+  <dxi-item itemType="button">
+    <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'createAccountTemplate'">
+    </dxo-button-options>
+  </dxi-item>
 
-    <dxi-item>
-      <div class="login-link">
-        Have an account? <a routerLink="/login">Sign In</a>
-      </div>
-    </dxi-item>
+  <dxi-item>
+    <div class="login-link">
+      Have an account? <a routerLink="/login">Sign In</a>
+    </div>
+  </dxi-item>
 
-    <ng-container *dxTemplate="let item of 'createAccountTemplate'">
-      <div>
-        <span class="dx-button-text">
-          <ng-container *ngIf="loading; else notLoading">
-            <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
-          </ng-container>
-  
-          <ng-template #notLoading>Create a new account</ng-template>
-        </span>
-      </div>
-    </ng-container>
+  <ng-container *dxTemplate="let item of 'createAccountTemplate'">
+    <div>
+      <span class="dx-button-text">
+        @if (loading) {
+          <dx-load-indicator width="24px" height="24px" [visible]="true"></dx-load-indicator>
+        } @else {
+          Create a new account
+        }
 
-  </dx-form>
+      </span>
+    </div>
+  </ng-container>
+
+</dx-form>
 </form>
