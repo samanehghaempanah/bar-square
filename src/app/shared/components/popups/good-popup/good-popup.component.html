@@ -1,0 +1,149 @@
+<dx-popup
+  [visible]="ShowPopUpForm"
+  [title]="Title"
+  [showCloseButton]="false"
+  [hideOnOutsideClick]="false"
+  [minWidth]="350"
+  [maxWidth]="400"
+  height="auto"
+>
+  <div *dxTemplate="let data of 'content'">
+    <dx-scroll-view width="100%" height="100%">
+      <div class="content">
+        <div class="d-flex flex-column">
+          <app-autocomplete-with-insert-item
+            [DataSource]="enums.Type"
+            [DefaultValue]="FormData.Type"
+            [ShowPopup]="true"
+            ValueExpr="id"
+            DisplayExpr="text"
+            Placeholder=""
+            Label="نوع جنس"
+            Class="w-100 my-2"
+            (SetValue)="handleAutocompleteValue($event, 'Type')"
+          >
+          </app-autocomplete-with-insert-item>
+          <app-autocomplete-with-insert-item
+            [DataSource]="enums.Packing"
+            [DefaultValue]="FormData.Packing"
+            ValueExpr="id"
+            DisplayExpr="text"
+            Placeholder=""
+            Label="بسته بندی"
+            Class="w-100 my-2"
+            (SetValue)="handleAutocompleteValue($event, 'Packing')"
+          >
+          </app-autocomplete-with-insert-item>
+          <app-autocomplete-with-insert-item
+            [DataSource]="enums.Brand"
+            [DefaultValue]="FormData.Brand"
+            ValueExpr="id"
+            DisplayExpr="text"
+            Placeholder=""
+            Label="برند"
+            Class="w-100 my-2"
+            (SetValue)="handleAutocompleteValue($event, 'Brand')"
+          >
+          </app-autocomplete-with-insert-item>
+          <div class="d-flex items-center my-2">
+            <label class="text-info text-nowrap ms-2"> نام جنس: </label>
+            <div class="d-flex items-center w-100">
+              <label class="text-muted ms-2">
+                {{
+                  FormData.Type && FormData.Packing && FormData.Brand
+                    ? enums.Type[FormData.Type - 1]?.text +
+                      " " +
+                      enums.Packing[FormData.Packing - 1]?.text +
+                      " " +
+                      enums.Brand[FormData.Brand - 1]?.text +
+                      " - "
+                    : "---"
+                }}
+              </label>
+              <dx-text-box
+                [(value)]="FormData.Name"
+                class="flex-1 my-2"
+                label="نام"
+                labelMode="floating"
+              >
+              </dx-text-box>
+            </div>
+          </div>
+          <div class="d-flex items-center column-gap-small w-100 my-2">
+            <label class="text-info text-nowrap"> دسته بندی: </label>
+            <label class="text-muted text-nowrap">
+              {{
+                FormData.Type ? enums.Type[FormData.Type - 1].category : "---"
+              }}
+            </label>
+          </div>
+
+          <app-autocomplete-with-insert-item
+            [DataSource]="enums.Quality"
+            [DefaultValue]="FormData.Quality"
+            ValueExpr="id"
+            DisplayExpr="text"
+            Placeholder=""
+            Label="کیفیت"
+            Class="w-100 my-1"
+            (SetValue)="handleAutocompleteValue($event, 'Quality')"
+          >
+          </app-autocomplete-with-insert-item>
+          <dx-number-box
+            [(value)]="FormData.Weight"
+            [showSpinButtons]="true"
+            [step]="1"
+            [min]="0"
+            [max]="1000"
+            format="#,##0.00"
+            class="w-100 my-2"
+            label="وزن ظرف"
+            labelMode="floating"
+          >
+          </dx-number-box>
+          <dx-number-box
+            [(value)]="FormData.PercentageDrop"
+            [showSpinButtons]="true"
+            [step]="1"
+            [min]="0"
+            [max]="1000"
+            format="#,##0.00"
+            class="w-100 my-2"
+            label="درصد افت"
+            labelMode="floating"
+          >
+          </dx-number-box>
+        </div>
+      </div>
+    </dx-scroll-view>
+  </div>
+
+  @if(PopUpFormMode==='insert') {
+  <dxi-toolbar-item
+    [options]="newFormButtonOptions"
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    cssClass="w-100"
+  >
+  </dxi-toolbar-item>
+  } @if(PopUpFormMode==='edit') {
+  <dxi-toolbar-item
+    [options]="editFormButtonOptions"
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    cssClass="w-100"
+  >
+  </dxi-toolbar-item>
+  }
+
+  <dxi-toolbar-item
+    [options]="closeFormButtonOptions"
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    cssClass="w-100"
+  >
+  </dxi-toolbar-item>
+</dx-popup>
