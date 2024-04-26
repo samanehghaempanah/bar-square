@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0px;
   min-height: 100%;
   height: 100%;
@@ -31,7 +32,7 @@ html, body {
 }
 
 .side-nav-outer-toolbar .dx-drawer {
-  height: calc(100% - 56px)
+  height: calc(100% - 56px);
 }
 
 .content-block {
@@ -61,8 +62,10 @@ html, body {
   border-left: 0;
 }
 
-.with-footer > .dx-scrollable-wrapper >
-.dx-scrollable-container > .dx-scrollable-content {
+.with-footer
+  > .dx-scrollable-wrapper
+  > .dx-scrollable-container
+  > .dx-scrollable-content {
   height: 100%;
 
   & > .dx-scrollview-content {
@@ -76,46 +79,45 @@ $side-panel-min-width: 60px;
 
 ///////////////////////////////////////////////
 
-
 @font-face {
   font-family: samim;
-  src: url('assets/fonts/Samim.woff');
+  src: url("assets/fonts/Samim.woff");
 }
 
 @font-face {
   font-family: samim-bold;
-  src: url('assets/fonts/Samim-Bold.woff');
+  src: url("assets/fonts/Samim-Bold.woff");
 }
 
 @font-face {
   font-family: iranSans;
-  src: url('assets/fonts/irsans.ttf');
+  src: url("assets/fonts/irsans.ttf");
 }
 
 @font-face {
   font-family: iranSans-bold;
-  src: url('assets/fonts/irsansb.ttf');
+  src: url("assets/fonts/irsansb.ttf");
 }
 
 @font-face {
   font-family: dana;
-  src: url('assets/fonts/dana-medium.woff');
+  src: url("assets/fonts/dana-medium.woff");
 }
 
 @font-face {
   font-family: dana-bold;
-  src: url('assets/fonts/dana-bold.woff');
+  src: url("assets/fonts/dana-bold.woff");
 }
 
 @font-face {
   font-family: vazir;
   // src: url('assets/fonts/Persian-NazaninBd.ttf');
-  src: url('assets/fonts/Vazir-Medium.woff');
+  src: url("assets/fonts/Vazir-Medium.woff");
 }
 
 @font-face {
   font-family: vazir-bold;
-  src: url('assets/fonts/Vazir-Bold.woff');
+  src: url("assets/fonts/Vazir-Bold.woff");
 }
 
 html,
@@ -169,8 +171,16 @@ body {
     height: 50px;
     display: grid;
     color: #ff5722;
-    background: radial-gradient(farthest-side, currentColor calc(100% - 6px), #0000 calc(100% - 5px) 0);
-    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 13px), #000 calc(100% - 12px));
+    background: radial-gradient(
+      farthest-side,
+      currentColor calc(100% - 6px),
+      #0000 calc(100% - 5px) 0
+    );
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      #0000 calc(100% - 13px),
+      #000 calc(100% - 12px)
+    );
     border-radius: 50%;
     animation: s9 2s infinite linear;
   }
@@ -179,8 +189,7 @@ body {
   .custom-loader::after {
     content: "";
     grid-area: 1/1;
-    background:
-      linear-gradient(currentColor 0 0) center,
+    background: linear-gradient(currentColor 0 0) center,
       linear-gradient(currentColor 0 0) center;
     background-size: 100% 10px, 10px 100%;
     background-repeat: no-repeat;
@@ -192,7 +201,7 @@ body {
 
   @keyframes s9 {
     100% {
-      transform: rotate(1turn)
+      transform: rotate(1turn);
     }
   }
 }
@@ -250,8 +259,49 @@ hr {
   margin: 10px 0;
 }
 
+.chip-purple {
+  height: 17px;
+  color: #9333ea;
+  background-color: #f6ecff;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 17px;
+  border: 1px solid #9333ea;
+  border-radius: 10px;
+  padding: 0 5px;
+  cursor: pointer;
+
+  .btn {
+    padding-top: 1px;
+    padding-left: 5px;
+    color: #9333ea;
+    font-weight: bold;
+    float: right;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  // .closebtn:hover {
+  //   color: #b22222;
+  // }
+
+  // .addbtn:hover {
+  //   color: #32cd32;
+  // }
+}
+
+.chip-purple:hover {
+  color: #32cd32;
+  background-color: #e0ffe0;
+  border: 1px solid #32cd32;
+
+  .btn {
+    color: #32cd32;
+  }
+}
+
 .disabled {
-  opacity: .38;
+  opacity: 0.38;
 }
 
 .formBtn {
@@ -284,6 +334,10 @@ hr {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+::ng-deep .text-nowrap {
+  text-wrap: nowrap;
 }
 
 .border-muted {
@@ -336,7 +390,7 @@ hr {
 }
 
 .vertical-middle {
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 .dir-rtl {
@@ -376,7 +430,7 @@ hr {
 }
 
 .text-disable {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .text-muted {
@@ -475,12 +529,20 @@ hr {
   column-gap: 2rem;
 }
 
+.column-gap-small {
+  column-gap: 1rem;
+}
+
 .column-gap-large {
   column-gap: 3rem;
 }
 
 .items-center {
   align-items: center;
+}
+
+.items-baseline {
+  align-items: baseline;
 }
 
 .items-start {
@@ -918,7 +980,7 @@ $side-panel-min-width: 60px;
 }
 
 .side-nav-outer-toolbar .dx-drawer {
-  height: calc(100% - 56px)
+  height: calc(100% - 56px);
 }
 
 .content-block {
@@ -956,11 +1018,14 @@ $side-panel-min-width: 60px;
   width: 100% !important;
 }
 
-.with-footer>.dx-scrollable-wrapper>.dx-scrollable-container>.dx-scrollable-content {
+.with-footer
+  > .dx-scrollable-wrapper
+  > .dx-scrollable-container
+  > .dx-scrollable-content {
   width: 100%;
   height: 100%;
 
-  &>.dx-scrollview-content {
+  & > .dx-scrollview-content {
     display: flex;
     flex-direction: column;
     min-height: 100%;
@@ -974,8 +1039,14 @@ $side-panel-min-width: 60px;
 ::ng-deep dx-number-box,
 ::ng-deep dx-text-box,
 ::ng-deep dx-select-box,
-::ng-deep dx-date-box {
+::ng-deep dx-date-box,
+::ng-deep dx-autocomplete {
   width: 200px;
+  height: 50px;
+}
+
+::ng-deep dx-autocomplete {
+  max-width: 195px;
 }
 
 ::ng-deep .dx-selectbox .dx-texteditor-input:read-only {
@@ -1075,6 +1146,11 @@ $side-panel-min-width: 60px;
   float: right !important;
 }
 
+::ng-deep .dx-popup-bottom .dx-toolbar-after,
+::ng-deep .dx-popup-bottom .dx-toolbar-before {
+  width: 50%;
+}
+
 ::ng-deep .dx-toolbar-center .dx-toolbar-label {
   max-width: 100% !important;
 }
@@ -1143,7 +1219,6 @@ $side-panel-min-width: 60px;
 }
 
 @media screen and (max-width: 768px) {
-
   .flex-md-column {
     flex-direction: column;
 
@@ -1169,7 +1244,8 @@ $side-panel-min-width: 60px;
     width: 0;
   }
 
-  ::ng-deep .dx-checkbox-icon, ::ng-deep .dx-radiobutton-icon {
+  ::ng-deep .dx-checkbox-icon,
+  ::ng-deep .dx-radiobutton-icon {
     width: 18px;
   }
 
