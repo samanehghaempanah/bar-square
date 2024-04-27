@@ -22,24 +22,6 @@ import { AuthGuardService } from './shared/services';
 
 const routes: Routes = [
   {
-    path: 'basic/goods/3',
-    component: GoodsComponent,
-    canActivate: [AuthGuardService],
-    data: { template: 3 },
-  },
-  {
-    path: 'basic/goods/2',
-    component: GoodsComponent,
-    canActivate: [AuthGuardService],
-    data: { template: 2 },
-  },
-  {
-    path: 'basic/goods/1',
-    component: GoodsComponent,
-    canActivate: [AuthGuardService],
-    data: { template: 1 },
-  },
-  {
     path: 'basic/goods',
     component: GoodsComponent,
     canActivate: [AuthGuardService],

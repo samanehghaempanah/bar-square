@@ -11,21 +11,7 @@ export const navigation = [
     items: [
       {
         text: 'اجناس',
-        // path: 'basic/goods',
-        items: [
-          {
-            text: 'طراحی اول (فرم)',
-            path: 'basic/goods/1',
-          },
-          {
-            text: 'طراحی دوم (گرید)',
-            path: 'basic/goods/2',
-          },
-          {
-            text: 'طراحی سوم (پاپ آپ)',
-            path: 'basic/goods/3',
-          }
-        ],
+        path: 'basic/goods',
       },
       {
         text: 'حساب بانکی',
